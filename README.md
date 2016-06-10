@@ -4,11 +4,11 @@
 
 Official:
 
-<a href = "https://github.com/Inactive-to-Reactive/SurvivalGamesV4/releases/download/V4.0.0/SGV4.0.0.phar">![Download](http://1.bp.blogspot.com/-FcmLlS5BGas/VUzfSCHLL0I/AAAAAAAAZuc/4-zKscFwv7w/s1600/download-button-png-azul-reflexo.png)</a>
+<a href = "https://github.com/Inactive-to-Reactive/SurvivalGamesV4/releases/download/V4.0.0/SGV4.0.0.phar">![Download](https://www.wowthemes.net/wp-content/uploads/2014/01/freethemesdownload.png)</a>
 
 Genisys:
 
-<a href = "https://github.com/Inactive-to-Reactive/SurvivalGamesV4/releases/download/V4.0.0/SGV4.0.0.Genisys.phar">![Download](http://1.bp.blogspot.com/-FcmLlS5BGas/VUzfSCHLL0I/AAAAAAAAZuc/4-zKscFwv7w/s1600/download-button-png-azul-reflexo.png)</a>
+<a href = "https://github.com/Inactive-to-Reactive/SurvivalGamesV4/releases/download/V4.0.0/SGV4.0.0.Genisys.phar">![Download](https://www.wowthemes.net/wp-content/uploads/2014/01/freethemesdownload.png)</a>
 
 # SurvivalGames  V4.0.0
 SurvivalGames plugin for All PHP Supported Server Softwares
