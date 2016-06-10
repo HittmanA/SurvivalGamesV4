@@ -1,7 +1,7 @@
 # **PLEASE DELETE ALL OLD CONFIGS WHEN UPDATING TO A LATER RELEASE** 
 
 
-# SurvivalGames  V4.0
+# SurvivalGames  V4.0.0
 SurvivalGames plugin for All PHP Supported Server Softwares
 
 # Commands:
