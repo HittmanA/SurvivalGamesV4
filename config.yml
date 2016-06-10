@@ -18,6 +18,7 @@ Ranks: true
 #If True, Players get RandomKit on join
 #If False, Players get RandomKit on join
 RandomKit: true
+
 chestitems:
 - - 261
   - 0
@@ -38,6 +39,39 @@ chestitems:
   - 0
   - 1
 - - 276
+  - 0
+  - 1
+- - 283
+  - 0
+  - 1
+- - 283
+  - 0
+  - 1
+- - 283
+  - 0
+  - 1
+- - 283
+  - 0
+  - 1
+- - 283
+  - 0
+  - 1
+- - 283
+  - 0
+  - 1
+- - 283
+  - 0
+  - 1
+- - 283
+  - 0
+  - 1
+- - 283
+  - 0
+  - 1
+- - 283
+  - 0
+  - 1
+- - 283
   - 0
   - 1
 - - 283
