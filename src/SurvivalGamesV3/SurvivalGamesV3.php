@@ -46,8 +46,8 @@ class SurvivalGamesV3 extends PluginBase implements Listener {
 	{
         $this->getServer()->getPluginManager()->registerEvents($this ,$this);
 		$this->getLogger()->info(C::GREEN . "SurvivalGamesV3 (V3.1.2) Loaded!");
-		$this->saveResource("rank.yml");
-		$this->saveResource("config.yml");
+		$this->saveResource("/rank.yml");
+		$this->saveResource("/config.yml");
 		@mkdir($this->getDataFolder());
 		$config2 = new Config($this->getDataFolder() . "/rank.yml", Config::YAML);
 		$config2->save();
@@ -151,10 +151,10 @@ class SurvivalGamesV3 extends PluginBase implements Listener {
 	}
 	
 	public function removeEffects(PlayerQuitEvent $event){
-		$ef = Effect::getEffect(1);
-          $ef1 = Effect::getEffect(8);
-          $event->getPlayer()->removeEffect($ef);
-          $event->getPlayer()->removeEffect($ef1);
+	  	$ef = Effect::getEffect(1);
+          	$ef1 = Effect::getEffect(8);
+          	$event->getPlayer()->removeEffect($ef);
+          	$event->getPlayer()->removeEffect($ef1);
 	}
 	
  	public function PlayerDeath(PlayerDeathEvent $event){
@@ -481,8 +481,8 @@ class SurvivalGamesV3 extends PluginBase implements Listener {
 	
 	public function onDisable()
 	{
-		$this->saveResource("config.yml");
-		$this->saveResource("rank.yml");
+		$this->saveResource("/config.yml");
+		$this->saveResource("/rank.yml");
 	}
 }
 class RefreshSigns extends PluginTask {
