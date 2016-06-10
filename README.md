@@ -1,8 +1,8 @@
 # **PLEASE DELETE ALL OLD CONFIGS WHEN UPDATING TO A LATER RELEASE** 
 
 
-# SurvivalGames  V3.0.6
-SurvivalGames plugin for ImagicalMine
+# SurvivalGames  V4.0
+SurvivalGames plugin for All PHP Supported Server Softwares
 
 # Commands:
 
