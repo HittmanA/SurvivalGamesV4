@@ -573,10 +573,7 @@ class GameSender extends PluginTask {
 								{
 									foreach($playersArena as $pl)
 									{
-										$pl->sendPopup("------------------------------------------------------------------------------------");
 										$pl->sendPopup(C::GOLD . "Starting in " . $timeToStart . " Seconds\n");
-										$pl->sendPopup("§4█" . "§4█" . "§4█" . "§4█" . "§4█" . "§4█" . "§4█" . "§4█" . "§4█" . "\n\n");
-										$pl->sendPopup("------------------------------------------------------------------------------------\n\n\n");
 										$level=$pl->getLevel();
 										$level->addSound(new PopSound($pl));
 									}
@@ -586,10 +583,7 @@ class GameSender extends PluginTask {
 								{
 									foreach($playersArena as $pl)
 									{
-										$pl->sendPopup("------------------------------------------------------------------------------------");
 										$pl->sendPopup(C::GOLD . "Starting in " . $timeToStart . " Seconds\n");
-										$pl->sendPopup("§4█" . "§4█" . "§4█" . "§4█" . "§4█" . "§4█" . "§4█" . "§4█" . "\n\n");
-										$pl->sendPopup("------------------------------------------------------------------------------------\n\n\n");
 										$level=$pl->getLevel();
 										$level->addSound(new PopSound($pl));
 									}
@@ -599,10 +593,7 @@ class GameSender extends PluginTask {
 								{
 									foreach($playersArena as $pl)
 									{
-										$pl->sendPopup("------------------------------------------------------------------------------------");
 										$pl->sendPopup(C::GOLD . "Starting in " . $timeToStart . " Seconds\n");
-										$pl->sendPopup("§4█" . "§4█" . "§4█" . "§4█" . "§4█" . "§4█" . "§4█" . "\n\n");
-										$pl->sendPopup("------------------------------------------------------------------------------------\n\n\n");
 										$level=$pl->getLevel();
 										$level->addSound(new PopSound($pl));
 									}
@@ -612,10 +603,7 @@ class GameSender extends PluginTask {
 								{
 									foreach($playersArena as $pl)
 									{
-										$pl->sendPopup("------------------------------------------------------------------------------------");
 										$pl->sendPopup(C::GOLD . "Starting in " . $timeToStart . " Seconds\n");
-										$pl->sendPopup("§4█" . "§4█" . "§4█" . "§4█" . "§4█" . "§4█" . "\n\n");
-										$pl->sendPopup("------------------------------------------------------------------------------------\n\n\n");
 										$level=$pl->getLevel();
 										$level->addSound(new PopSound($pl));
 									}
@@ -625,10 +613,7 @@ class GameSender extends PluginTask {
 								{
 									foreach($playersArena as $pl)
 									{
-										$pl->sendPopup("------------------------------------------------------------------------------------");
 										$pl->sendPopup(C::GOLD . "Starting in " . $timeToStart . " Seconds\n");
-										$pl->sendPopup("§4█" . "§4█" . "§4█" . "§4█" . "§4█" . "\n\n");
-										$pl->sendPopup("------------------------------------------------------------------------------------\n\n\n");
 										$level=$pl->getLevel();
 										$level->addSound(new PopSound($pl));
 									}
@@ -638,10 +623,7 @@ class GameSender extends PluginTask {
 								{
 									foreach($playersArena as $pl)
 									{
-										$pl->sendPopup("------------------------------------------------------------------------------------");
 										$pl->sendPopup(C::GOLD . "Starting in " . $timeToStart . " Seconds\n");
-										$pl->sendPopup("§4█" . "§4█" . "§4█" . "§4█" . "\n\n");
-										$pl->sendPopup("------------------------------------------------------------------------------------\n\n\n");
 										$level=$pl->getLevel();
 										$level->addSound(new PopSound($pl));
 									}
@@ -651,10 +633,7 @@ class GameSender extends PluginTask {
 								{
 									foreach($playersArena as $pl)
 									{
-										$pl->sendPopup("------------------------------------------------------------------------------------");
 										$pl->sendPopup(C::GOLD . "Starting in " . $timeToStart . " Seconds\n");
-										$pl->sendPopup("§4█" . "§4█" . "§4█" . "\n\n");
-										$pl->sendPopup("------------------------------------------------------------------------------------\n\n\n");
 										$level=$pl->getLevel();
 										$level->addSound(new PopSound($pl));
 									}
@@ -664,10 +643,7 @@ class GameSender extends PluginTask {
 								{
 									foreach($playersArena as $pl)
 									{
-										$pl->sendPopup("------------------------------------------------------------------------------------");
 										$pl->sendPopup(C::GOLD . "Starting in " . $timeToStart . " Seconds\n");
-										$pl->sendPopup("§4█" . "§4█" . "\n\n");
-										$pl->sendPopup("------------------------------------------------------------------------------------\n\n\n");
 										$level=$pl->getLevel();
 										$level->addSound(new PopSound($pl));
 									}
@@ -677,10 +653,7 @@ class GameSender extends PluginTask {
 								{
 									foreach($playersArena as $pl)
 									{
-										$pl->sendPopup("------------------------------------------------------------------------------------");
 										$pl->sendPopup(C::GOLD . "Starting in " . $timeToStart . " Seconds\n");
-										$pl->sendPopup("§4█" . "\n\n");
-										$pl->sendPopup("------------------------------------------------------------------------------------\n\n\n");
 										$level=$pl->getLevel();
 										$level->addSound(new PopSound($pl));
 									}
@@ -693,11 +666,10 @@ class GameSender extends PluginTask {
 									{
 									$level=$pl->getLevel();
 									$level->addSound(new TNTPrimeSound($pl));
-                                                                        $pl->sendMessage("§b-------------------------------§r");
+                                                                        $pl->sendMessage("§b===============================§r");
                                                                         $pl->sendMessage($this->prefix . C::GREEN . "Let the Games" . C::RED . C::BOLD . " Begin!");
                                                                         $pl->sendMessage($this->prefix . C::GREEN . "You have 30 seconds of §bGrace");
-                                                                        $pl->sendMessage($this->prefix . C::GRAY . "BTW Grace = Invincibility");
-                                                                        $pl->sendMessage("§b-------------------------------§r");}
+                                                                        $pl->sendMessage("§b===============================§r");}
                                                                         $this->refillChests($levelArena);
 								}
 								$config->set($arena . "StartTime", $timeToStart);
