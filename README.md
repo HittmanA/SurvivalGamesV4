@@ -1,12 +1,12 @@
 # **PLEASE DELETE ALL OLD CONFIGS WHEN UPDATING TO A LATER RELEASE** 
 
-### Download Latest Release:
+## Download Latest Release:
 
-Official:
+### Official:
 
 <a href = "https://github.com/Inactive-to-Reactive/SurvivalGamesV4/releases/download/V4.0.0/SGV4.0.0.phar">![Download](https://www.wowthemes.net/wp-content/uploads/2014/01/freethemesdownload.png)</a>
 
-Genisys:
+### Genisys:
 
 <a href = "https://github.com/Inactive-to-Reactive/SurvivalGamesV4/releases/download/V4.0.0/SGV4.0.0.Genisys.phar">![Download](https://www.wowthemes.net/wp-content/uploads/2014/01/freethemesdownload.png)</a>
 
