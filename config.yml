@@ -1,4 +1,13 @@
 ---
+#Use § for the section sign, use http://minecraft.gamepedia.com/Formatting_codes for the color codes
+#This is the prefix that will come before every message in chat.
+#By default, it is set to §7[§f§lS§cG§r§7]  
+#In words, the format is C:FORMAT "Text"
+#In words, the default is C:GRAY "[" C:WHITE C:BOLD "S" C:RED "G" C:RESET C:GRAY "]"
+#Feel free to change it to your liking, like [SERVERNAME: SG] eg: [LifeBoat: SG]!
+#Have fun!
+SG_Prefix: §7[§f§lS§cG§r§7] 
+
 #If ON, then on player death, lightning will strike the ground where they died
 #If OFF, then no lightning
 lightning_effect: ON
