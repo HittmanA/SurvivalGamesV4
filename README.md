@@ -25,7 +25,7 @@ The license does not state the following but these terms apply to SurvivalGamesV
 # Contributers **(No Particular Order)**
 Contributer name | Contributing Job
 ---------------- | ------------------
-@Inactive-to-Reactive/SGTeam | Took over V4
+@Inactive-to-Reactive/SurvivalGamesTeam | Took over V4
 @Driesboy | Genysis Manager
 @ImagicalGamer | Took over V1, V2, V3
 @Taki21 | Main bug-fixer
