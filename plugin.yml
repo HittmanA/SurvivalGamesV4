@@ -1,4 +1,4 @@
-name: SurvivalGamesV3
+name: SurvivalGamesV4
 main: SurvivalGamesV4\SurvivalGamesV4
 version: 4.0.1
 api: [1.0.0, 2.0.0, 3.0.0]
