@@ -1,5 +1,5 @@
 <?php
-namespace SurvivalGamesV3;
+namespace SurvivalGamesV4;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\scheduler\PluginTask;
@@ -35,7 +35,7 @@ use pocketmine\entity\Entity;
 use pocketmine\network\protocol\AddEntityPacket;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 
-class SurvivalGamesV3 extends PluginBase implements Listener {
+class SurvivalGamesV4 extends PluginBase implements Listener {
 	
     public $prefix = C::GRAY . "[" . C::WHITE . C::BOLD . "S" . C::RED . "G" . C::RESET . C::GRAY . "] ";
 	public $mode = 0;
@@ -45,7 +45,7 @@ class SurvivalGamesV3 extends PluginBase implements Listener {
 	public function onEnable()
 	{
         $this->getServer()->getPluginManager()->registerEvents($this ,$this);
-		$this->getLogger()->info(C::GREEN . "SurvivalGamesV3 (V3.1.2) Loaded!");
+		$this->getLogger()->info(C::GREEN . "SurvivalGamesV4 (V4.0.0) Loaded!");
 		$this->saveResource("/rank.yml");
 		$this->saveResource("/config.yml");
 		@mkdir($this->getDataFolder());
