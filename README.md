@@ -15,7 +15,7 @@ SurvivalGames plugin for All PHP Supported Server Softwares
 
 # Commands:
 
-**/sg** Displays all of the possible SurvivalGamesV3 commands!
+**/sg** Displays all of the possible SurvivalGamesV4 commands!
 
 # CopyRight
 The license does not state the following but these terms apply to SurvivalGamesV3
