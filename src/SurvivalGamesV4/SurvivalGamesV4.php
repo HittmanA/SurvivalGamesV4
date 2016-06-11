@@ -37,7 +37,8 @@ use pocketmine\event\entity\EntityDamageByEntityEvent;
 
 class SurvivalGamesV4 extends PluginBase implements Listener {
 	
-    public $prefix = C::GRAY . "[" . C::WHITE . C::BOLD . "S" . C::RED . "G" . C::RESET . C::GRAY . "] ";
+	public $sgprefix = $this->getConfig()->get("SG_Prefix");
+    	public $prefix = $sgprefix;
 	public $mode = 0;
 	public $arenas = array();
 	public $currentLevel = "";
