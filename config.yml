@@ -28,6 +28,18 @@ Ranks: true
 #If False, Players get RandomKit on join
 RandomKit: true
 
+#If True, automatic chest items will appear without you doing work
+#If False, you will have to manually choose what items you want in chests
+AutoChestItems: true
+
+#If True, Remove Kits After 1st SG Match
+#If false, players will constantly have Kits every SG Match
+RemoveKitsAfterSG: false
+
+#If True, Clear Items from inventory except VIPs
+#If false, Players will have the items recieved from every SG Match
+ClearInv: true
+
 chestitems:
 - - 261
   - 0
