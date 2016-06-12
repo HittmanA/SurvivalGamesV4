@@ -14,14 +14,14 @@ SurvivalGames plugin for All PHP Supported Server Softwares
 **/sg** Displays all of the possible SurvivalGamesV4 commands!
 
 # CopyRight
-The license does not state the following but these terms apply to SurvivalGamesV3
+The license does not state the following but these terms apply to SurvivalGamesV4
 
 - **Under no circumstances do you have the right to modify and/or re-distribute this resource!**
 
 # Contributers **(No Particular Order)**
 Contributer name | Contributing Job
 ---------------- | ------------------
-@Inactive-to-Reactive/SurvivalGamesTeam | Took over V4
+@remotevase + @Taki21 | Founders of SGV4
 @Driesboy | Genysis Manager
 @ImagicalGamer | Took over V1, V2, V3
 @Taki21 | Main bug-fixer
