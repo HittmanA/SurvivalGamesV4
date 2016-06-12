@@ -10,7 +10,7 @@
 
 <a href = "https://github.com/Inactive-to-Reactive/SurvivalGamesV4/releases/download/V4.0.0/SGV4.0.0.Genisys.phar">![Download](https://www.wowthemes.net/wp-content/uploads/2014/01/freethemesdownload.png)</a>
 
-# SurvivalGames  V4.0.1.8
+# SurvivalGames  V4.0.2
 SurvivalGames plugin for All PHP Supported Server Softwares
 
 # Commands:
