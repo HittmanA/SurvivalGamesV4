@@ -252,12 +252,24 @@ class SurvivalGamesV4 extends PluginBase implements Listener {
 		{
 			$config = new Config($this->getDataFolder() . "/config.yml", Config::YAML);
 			$sofar = $config->get($level . "StartTime");
-			if($sofar > 0)
-			{
+			if($sofar > 0){
+				/* 
+				
+				* Old Way To Set Event Cancelled
+				
 				$to = clone $event->getFrom();
 				$to->yaw = $event->getTo()->yaw;
 				$to->pitch = $event->getTo()->pitch;
-				$event->setTo($to);
+				$event->setTo($to); 
+				
+				*/
+				
+				# New way to Cancel Event, Supported by both Genisys and Other PHP Server Providers
+				$from = $event->getFrom();
+                        	$to = $event->getTo();
+                        	if($from->x !== $to->x or $from->z !== $to->z){
+                        		$event->setCancelled(true);
+                        	}
 			}
 		}
 	}
