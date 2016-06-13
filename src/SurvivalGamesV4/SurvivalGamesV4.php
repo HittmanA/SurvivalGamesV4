@@ -761,6 +761,12 @@ class GameSender extends PluginTask {
                                                                         $pl->sendMessage("§b===============================§r");}
                                                                         $this->refillChests($levelArena);
                                                                         
+                                                                        if($config->get("ClearInv") === true){
+                                                                        	$pl->getInventory()->clearAll();
+                                                                        }else{
+                                                                        	$this->giveKits();
+                                                                        }
+                                                                        
                                                                         $this->giveKits();
 								}
 								$config->set($arena . "StartTime", $timeToStart);
