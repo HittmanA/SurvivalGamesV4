@@ -22,7 +22,7 @@ The license does not state the following but these terms apply to SurvivalGamesV
 Contributer name | Contributing Job
 ---------------- | ------------------
 @remotevase + @Taki21 | Founders of SGV4
-@Driesboy | Genysis Manager
+@Driesboy | Genisys Manager
 @ImagicalGamer | Took over V1, V2, V3
 @Taki21 | Main bug-fixer
 @remotevase | New Features, Grammar fixer
