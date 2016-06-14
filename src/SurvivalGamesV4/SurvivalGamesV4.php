@@ -38,7 +38,8 @@ use pocketmine\event\entity\EntityDamageByEntityEvent;
 
 class SurvivalGamesV4 extends PluginBase implements Listener {
 	
-	public $prefix = $this->getConfig()->get("SG_Prefix");
+	public $sgprefix = $this->getConfig()->get("SG_Prefix");
+    	public $prefix = $sgprefix;
 	public $mode = 0;
 	public $arenas = array();
 	public $currentLevel = "";
@@ -50,13 +51,9 @@ class SurvivalGamesV4 extends PluginBase implements Listener {
 		$this->saveResource("/rank.yml");
 		$this->saveResource("/config.yml");
 		@mkdir($this->getDataFolder());
-		$config2 = new Config($this->getDataFolder() . "/vips.yml", Config::YAML);
+		$config2 = new Config($this->getDataFolder() . "/rank.yml", Config::YAML);
 		$config2->save();
 		$config = new Config($this->getDataFolder() . "/config.yml", Config::YAML);
-		if($config2->get("vips") === null){
-			$vips = array();
-			$config2->set("vips",$vip);
-		}
 		if($config->get("arenas")!=null)
 		{
 			$this->arenas = $config->get("arenas");
@@ -66,11 +63,11 @@ class SurvivalGamesV4 extends PluginBase implements Listener {
 			$this->getServer()->loadLevel($lev);
 		}
 		$items = array(array(261,0,1),array(262,0,2),array(262,0,3),array(267,0,1),array(268,0,1),array(272,0,1),array(276,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1));
-		if($config->get("chestitems") === null)
+		if($config->get("chestitems")==null)
 		{
 			$config->set("chestitems",$items);
 		}
-                if($config->get("lightning_effect") === null){
+                if($config->get("lightning_effect")==null){
                 $config->set("lightning_effect","ON");
                 }
 		$config->save();
@@ -126,13 +123,6 @@ class SurvivalGamesV4 extends PluginBase implements Listener {
 		$p->addEffect($s);
 		$p->addEffect($j);
  	}
- 	
-    	public function playerJoin($spawn){
-		$player->teleport(new Vector3($x, $y, $z, $level));	
-		$spawn = $this->getServer()->getDefaultLevel()->getSafeSpawn(); 
-        	$this->getServer()->getDefaultLevel()->loadChunk($spawn->getFloorX(), 
-        	$spawn->getFloorZ()); $player->teleport($spawn,0,0);
-	}
 	
 	public function onMove(PlayerMoveEvent $event)
 	{
@@ -193,7 +183,7 @@ class SurvivalGamesV4 extends PluginBase implements Listener {
 	}
 	
 	public function onCommand(CommandSender $player, Command $cmd, $label, array $args) {
-        	switch($cmd->getName()){
+        switch($cmd->getName()){
 			case "sg":
 				if($player->isOp())
 				{
@@ -214,77 +204,71 @@ class SurvivalGamesV4 extends PluginBase implements Listener {
 									$player->sendMessage($this->prefix . "You are about to register an arena. Tap a block to set a spawn point there!");
 									$player->setGamemode(1);
 									$player->teleport($this->getServer()->getLevelByName($args[1])->getSafeSpawn(),0,0);
-								}else{
+								}
+								else
+								{
 									$player->sendMessage($this->prefix . "There is no world with this name.");
 								}
-							}else{
-								$player->sendMessage($this->prefix . "SurvivalGames Commands!");
-                                             			$player->sendMessage($this->prefix . "/sg create [world] Creates an arena in the specified world!");
-                                             			$player->sendMessage($this->prefix . "/setrank [rank] [player] sets a players rank!");
-                                             			$player->sendMessage($this->prefix . "/ranks shows a list of ranks! <- In Dev");	
 							}
-						}else{
+							else
+							{
+							                                             $player->sendMessage($this->prefix . "SurvivalGames Commands!");
+                                             $player->sendMessage($this->prefix . "/sg create [world] Creates an arena in the specified world!");
+                                             $player->sendMessage($this->prefix . "/setrank [rank] [player] sets a players rank!");
+                                             $player->sendMessage($this->prefix . "/ranks shows a list of ranks! <- In Dev");	
+							}
+						}
+						else
+						{
 							$player->sendMessage($this->prefix . "There is no such command.");
 						}
-					}else{
+					}
+					else
+					{
                                              $player->sendMessage($this->prefix . "SurvivalGames Commands!");
                                              $player->sendMessage($this->prefix . "/sg create [world] Creates an arena in the specified world!");
-                                             $player->sendMessage($this->prefix . "/setvip [player] sets a players rank!");
-                                             $player->sendMessage($this->prefix . "/vips shows a list of ranks!");
+                                             $player->sendMessage($this->prefix . "/setrank [rank] [player] sets a players rank!");
+                                             $player->sendMessage($this->prefix . "/ranks shows a list of ranks! <- In Dev");
 					}
 				}
-			break;
-			
-			case "setvip":
-				$config = new Config($this->getDataFolder()."vips.yml",Config::YAML);
-				
-				# NEW
+			return true;
+			case "setrank":
+				if($this->getConfig()->get("Ranks") === true){
 				if($player->isOp()){
-					if(!isset($args[0])){
-						$player->sendMessage($this->prefix . "Please specify a Player!");
-					}else{
-						if(file_exists($this->getServer()->getDataPath() . "/players/" . strtolower($args[0]) . ".dat")){
-							$vip = strtolower($args[0]);
-							$vips = $config->get("vips");
-							array_push($vips,$vip);
-							$player->sendMessage($this->prefix . "Successfully added new VIP!");
-						}else{
-							$player->sendMessage($this->prefix . "You have probably spelled the persons name wrong or that player doesn't Exist!");
-						}
+				if(!empty($args[0]))	{
+					if(!empty($args[1])){
+					$rank = "";
+					if($args[0]=="VIP+"){
+						$rank = "§b[§aVIP§4+§b]";
 					}
-				}	
-				
-				# OLD
-				/* if($vip->get("Ranks") === true){
-					if($player->isOp()){
-						if(!empty($args[0])){
-							if(!empty($args[1])){
-								$rank = "";
-								if($args[0]=="VIP+"){
-									$rank = "§b[§aVIP§4+§b]";
-								}else if($args[0]=="YouTuber"){
-									$rank = "§b[§4You§7Tuber§b]";
-								}else if($args[0]=="YouTuber+"){
-									$rank = "§b[§4You§7Tuber§4+§b]";
-								}else{
-									$rank = "§b[§a" . $args[0] . "§b]";
-								}
-								$config = new Config($this->getDataFolder() . "/rank.yml", Config::YAML);
-								$config->set($args[1],$rank);
-								$config->save();
-								$player->sendMessage($args[1] . " got this rank: " . $rank);
-							}else{
-								$player->sendMessage("Missing parameter(s)");
-							}
-						}else{
-							$player->sendMessage("Missing parameter(s)");
-						}
+					else if($args[0]=="YouTuber"){
+						$rank = "§b[§4You§7Tuber§b]";
+					}
+					else if($args[0]=="YouTuber+"){
+						$rank = "§b[§4You§7Tuber§4+§b]";
+					}
+					else
+					{
+						$rank = "§b[§a" . $args[0] . "§b]";
+					}
+					$config = new Config($this->getDataFolder() . "/rank.yml", Config::YAML);
+					$config->set($args[1],$rank);
+					$config->save();
+					$player->sendMessage($args[1] . " got this rank: " . $rank);
+					}
+					else
+					{
+						$player->sendMessage("Missing parameter(s)");
 					}
 				}
-				*/
-			break;
+				else
+				{
+					$player->sendMessage("Missing parameter(s)");
+				}
+				}
+				}
+			return true;
 		}
-		return true;
 	}
 	
 	public function onChat(PlayerChatEvent $event)
@@ -448,18 +432,11 @@ class SurvivalGamesV4 extends PluginBase implements Listener {
 	}
 }
 class RefreshSigns extends PluginTask {
-	
-	public $prefix;
-    
+    public $prefix = C::GRAY . "[" . C::WHITE . C::BOLD . "S" . C::RED . "G" . C::RESET . C::GRAY . "] ";
 	public function __construct($plugin)
 	{
 		$this->plugin = $plugin;
 		parent::__construct($plugin);
-	}
-	
-	public function prefix() {
-		$config = new Config($this->plugin->getDataFolder() . "/config.yml", Config::YAML);
-		$this->prefix = $config->get("SG_Prefix");
 	}
   
 	public function onRun($tick)
@@ -491,16 +468,11 @@ class RefreshSigns extends PluginTask {
 	}
 }
 class GameSender extends PluginTask {
-
+    public $prefix = C::GRAY . "[" . C::WHITE . C::BOLD . "S" . C::RED . "G" . C::RESET . C::GRAY . "] ";
 	public function __construct($plugin)
 	{
 		$this->plugin = $plugin;
 		parent::__construct($plugin);
-	}
-	
-	public function prefix() {
-		$config = new Config($this->plugin->getDataFolder() . "/config.yml", Config::YAML);
-		$this->prefix = $config->get("SG_Prefix");
 	}
   
   	public function giveRandomKit(PlayerJoinEvent $e){
