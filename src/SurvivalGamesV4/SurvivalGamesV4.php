@@ -36,7 +36,7 @@ use pocketmine\network\protocol\AddEntityPacket;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 class SurvivalGamesV4 extends PluginBase implements Listener {
 	
-	public $prefix = $this->getConfig()->get("SG_Prefix");
+	public $prefix;
 	public $mode = 0;
 	public $arenas = array();
 	public $currentLevel = "";
@@ -44,7 +44,7 @@ class SurvivalGamesV4 extends PluginBase implements Listener {
 	public function onEnable()
 	{
         $this->getServer()->getPluginManager()->registerEvents($this ,$this);
-		$this->getLogger()->info(C::GREEN . "SurvivalGamesV4 (V4.0.2) Loaded!");
+		$this->getLogger()->info(C::GREEN . "SurvivalGamesV4 (V4.0.5) Loaded!");
 		$this->saveResource("/rank.yml");
 		$this->saveResource("/config.yml");
 		@mkdir($this->getDataFolder());
@@ -74,6 +74,7 @@ class SurvivalGamesV4 extends PluginBase implements Listener {
 		$config->save();
 		$this->getServer()->getScheduler()->scheduleRepeatingTask(new GameSender($this), 20);
 		$this->getServer()->getScheduler()->scheduleRepeatingTask(new RefreshSigns($this), 10);
+		$this->prefix = $config->get("SG_Prefix");
 	}
 	
 	public function removeEffects(PlayerQuitEvent $event){
