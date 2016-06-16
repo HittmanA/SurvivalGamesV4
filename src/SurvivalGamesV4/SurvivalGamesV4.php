@@ -185,96 +185,88 @@ class SurvivalGamesV4 extends PluginBase implements Listener {
 	}
 	
 	public function onCommand(CommandSender $player, Command $cmd, $label, array $args) {
-        	switch($cmd->getName()){
-			case "sg":
-				if($player->isOp())
-				{
-					if(!empty($args[0]))
-                                       
-					{
-						if($args[0]=="create")
-						{
-							if(!empty($args[1]))
-							{
-								if(file_exists($this->getServer()->getDataPath() . "/worlds/" . $args[1]))
-								{
-									$this->getServer()->loadLevel($args[1]);
-									$this->getServer()->getLevelByName($args[1])->loadChunk($this->getServer()->getLevelByName($args[1])->getSafeSpawn()->getFloorX(), $this->getServer()->getLevelByName($args[1])->getSafeSpawn()->getFloorZ());
-									array_push($this->arenas,$args[1]);
-									$this->currentLevel = $args[1];
-									$this->mode = 1;
-									$player->sendMessage($this->prefix . "You are about to register an arena. Tap a block to set a spawn point there!");
-									$player->setGamemode(1);
-									$player->teleport($this->getServer()->getLevelByName($args[1])->getSafeSpawn(),0,0);
-								}else{
-									$player->sendMessage($this->prefix . "There is no world with this name.");
-								}
+        	if(strtolower($cmd->getName() == "sg")){
+			if($player->isOp()){
+				if(!empty($args[0])){
+					if($args[0]=="create"){
+						if(!empty($args[1])){
+							if(file_exists($this->getServer()->getDataPath() . "/worlds/" . $args[1])){
+								$this->getServer()->loadLevel($args[1]);
+								$this->getServer()->getLevelByName($args[1])->loadChunk($this->getServer()->getLevelByName($args[1])->getSafeSpawn()->getFloorX(), $this->getServer()->getLevelByName($args[1])->getSafeSpawn()->getFloorZ());
+								array_push($this->arenas,$args[1]);
+								$this->currentLevel = $args[1];
+								$this->mode = 1;
+								$player->sendMessage($this->prefix . "You are about to register an arena. Tap a block to set a spawn point there!");
+								$player->setGamemode(1);
+								$player->teleport($this->getServer()->getLevelByName($args[1])->getSafeSpawn(),0,0);
 							}else{
-								$player->sendMessage($this->prefix . "SurvivalGames Commands!");
-                                             			$player->sendMessage($this->prefix . "/sg create [world] Creates an arena in the specified world!");
-                                             			$player->sendMessage($this->prefix . "/setrank [rank] [player] sets a players rank!");
-                                             			$player->sendMessage($this->prefix . "/ranks shows a list of ranks! <- In Dev");	
+								$player->sendMessage($this->prefix . "There is no world with this name.");
 							}
 						}else{
-							$player->sendMessage($this->prefix . "There is no such command.");
+							$player->sendMessage($this->prefix . "SurvivalGames Commands!");
+                                             		$player->sendMessage($this->prefix . "/sg create [world] Creates an arena in the specified world!");
+                                             		$player->sendMessage($this->prefix . "/setrank [rank] [player] sets a players rank!");
+                                             		$player->sendMessage($this->prefix . "/ranks shows a list of ranks! <- In Dev");	
 						}
 					}else{
-                                             $player->sendMessage($this->prefix . "SurvivalGames Commands!");
-                                             $player->sendMessage($this->prefix . "/sg create [world] Creates an arena in the specified world!");
-                                             $player->sendMessage($this->prefix . "/setvip [player] sets a players rank!");
-                                             $player->sendMessage($this->prefix . "/vips shows a list of ranks!");
+						$player->sendMessage($this->prefix . "There is no such command.");
+					}
+				}else{
+                                        $player->sendMessage($this->prefix . "SurvivalGames Commands!");
+                                        $player->sendMessage($this->prefix . "/sg create [world] Creates an arena in the specified world!");
+                                        $player->sendMessage($this->prefix . "/setvip [player] sets a players rank!");
+                                        $player->sendMessage($this->prefix . "/vips shows a list of ranks!");
+				}
+			}
+        	}
+			
+		if(strtolower($cmd->getName() == setvip)){
+			$config = new Config($this->getDataFolder()."vips.yml",Config::YAML);
+			
+			# NEW
+			if($player->isOp()){
+				if(!isset($args[0])){
+					$player->sendMessage($this->prefix . "Please specify a Player!");
+				}else{
+					if(file_exists($this->getServer()->getDataPath() . "/players/" . strtolower($args[0]) . ".dat")){
+						$vip = strtolower($args[0]);
+						$vips = $config->get("vips");
+						array_push($vips,$vip);
+						$player->sendMessage($this->prefix . "Successfully added new VIP!");
+					}else{
+						$player->sendMessage($this->prefix . "You have probably spelled the persons name wrong or that player doesn't Exist!");
 					}
 				}
-			break;
-			
-			case "setvip":
-				$config = new Config($this->getDataFolder()."vips.yml",Config::YAML);
+			}	
 				
-				# NEW
+			# OLD
+			/* if($vip->get("Ranks") === true){
 				if($player->isOp()){
-					if(!isset($args[0])){
-						$player->sendMessage($this->prefix . "Please specify a Player!");
-					}else{
-						if(file_exists($this->getServer()->getDataPath() . "/players/" . strtolower($args[0]) . ".dat")){
-							$vip = strtolower($args[0]);
-							$vips = $config->get("vips");
-							array_push($vips,$vip);
-							$player->sendMessage($this->prefix . "Successfully added new VIP!");
-						}else{
-							$player->sendMessage($this->prefix . "You have probably spelled the persons name wrong or that player doesn't Exist!");
-						}
-					}
-				}	
-				
-				# OLD
-				/* if($vip->get("Ranks") === true){
-					if($player->isOp()){
-						if(!empty($args[0])){
-							if(!empty($args[1])){
-								$rank = "";
-								if($args[0]=="VIP+"){
-									$rank = "§b[§aVIP§4+§b]";
-								}else if($args[0]=="YouTuber"){
-									$rank = "§b[§4You§7Tuber§b]";
-								}else if($args[0]=="YouTuber+"){
-									$rank = "§b[§4You§7Tuber§4+§b]";
-								}else{
-									$rank = "§b[§a" . $args[0] . "§b]";
-								}
-								$config = new Config($this->getDataFolder() . "/rank.yml", Config::YAML);
-								$config->set($args[1],$rank);
-								$config->save();
-								$player->sendMessage($args[1] . " got this rank: " . $rank);
+					if(!empty($args[0])){
+						if(!empty($args[1])){
+							$rank = "";
+							if($args[0]=="VIP+"){
+								$rank = "§b[§aVIP§4+§b]";
+							}else if($args[0]=="YouTuber"){
+								$rank = "§b[§4You§7Tuber§b]";
+							}else if($args[0]=="YouTuber+"){
+								$rank = "§b[§4You§7Tuber§4+§b]";
 							}else{
-								$player->sendMessage("Missing parameter(s)");
+								$rank = "§b[§a" . $args[0] . "§b]";
 							}
+							$config = new Config($this->getDataFolder() . "/rank.yml", Config::YAML);
+							$config->set($args[1],$rank);
+							$config->save();
+							$player->sendMessage($args[1] . " got this rank: " . $rank);
 						}else{
 							$player->sendMessage("Missing parameter(s)");
 						}
+					}else{
+						$player->sendMessage("Missing parameter(s)");
 					}
 				}
-				*/
-			break;
+			}
+			*/
 		}
 		return true;
 	}
@@ -304,29 +296,23 @@ class SurvivalGamesV4 extends PluginBase implements Listener {
  		}
 	}
 	
-	public function onInteract(PlayerInteractEvent $event)
-	{
+	public function onInteract(PlayerInteractEvent $event){
+		
 		$player = $event->getPlayer();
 		$block = $event->getBlock();
 		$tile = $player->getLevel()->getTile($block);
 		
-		if($tile instanceof Sign) 
-		{
-			if($this->mode==26)
-			{
+		if($tile instanceof Sign){
+			if($this->mode==26){
 				$tile->setText(C::GRAY . "[§2Join§7]",C::BLUE  . "0 / 24",$this->currentLevel,$this->prefix);
 				$this->refreshArenas();
 				$this->currentLevel = "";
 				$this->mode = 0;
 				$player->sendMessage($this->prefix . "The arena has been registered successfully!");
-			}
-			else
-			{
+			}else{
 				$text = $tile->getText();
-				if($text[3] == $this->prefix)
-				{
-					if($text[0]==C::WHITE . "[§bJoin§f]")
-					{
+				if($text[3] == $this->prefix){
+					if($text[0]==C::WHITE . "[§bJoin§f]"){
 						$config = new Config($this->getDataFolder() . "/config.yml", Config::YAML);
 						$level = $this->getServer()->getLevelByName($text[2]);
 						$aop = count($level->getPlayers());
@@ -338,54 +324,50 @@ class SurvivalGamesV4 extends PluginBase implements Listener {
 						$player->setNameTag(C::BOLD . C::RED . $player->getName());
 						$player->getInventory()->clearAll();
                                                 $player->sendMessage($this->prefix . C::GRAY . "You have Successfully Joined a Match!");
+                                                
+                                                /*
 						$config2 = new Config($this->getDataFolder() . "/rank.yml", Config::YAML);
 						$rank = $config2->get($player->getName());
 						if($this->getConfig()->get("Ranks") === true){
-						if($rank == "§b[§aVIP§4+§b]")
-						{
-							$player->getInventory()->setContents(array(Item::get(0, 0, 0)));
-							$player->getInventory()->setHelmet(Item::get(Item::CHAIN_HELMET));
-							$player->getInventory()->setChestplate(Item::get(Item::CHAIN_CHESTPLATE));
-							$player->getInventory()->setLeggings(Item::get(Item::CHAIN_LEGGINGS));
-							$player->getInventory()->setBoots(Item::get(Item::CHAIN_BOOTS));
-							$player->getInventory()->setItem(0, Item::get(Item::DIAMOND_AXE, 0, 1));
-							$player->getInventory()->sendArmorContents($player);
-							$player->getInventory()->setHotbarSlotIndex(0, 0);
-						}
-						else if($rank == "§b[§aVIP§b]")
-						{
-							$player->getInventory()->setContents(array(Item::get(0, 0, 0)));
-							$player->getInventory()->setHelmet(Item::get(Item::GOLD_HELMET));
-							$player->getInventory()->setChestplate(Item::get(Item::GOLD_CHESTPLATE));
-							$player->getInventory()->setLeggings(Item::get(Item::LEATHER_PANTS));
-							$player->getInventory()->setBoots(Item::get(Item::LEATHER_BOOTS));
-							$player->getInventory()->setItem(0, Item::get(Item::IRON_AXE, 0, 1));
+							if($rank == "§b[§aVIP§4+§b]"){
+								$player->getInventory()->setContents(array(Item::get(0, 0, 0)));
+								$player->getInventory()->setHelmet(Item::get(Item::CHAIN_HELMET));
+								$player->getInventory()->setChestplate(Item::get(Item::CHAIN_CHESTPLATE));
+								$player->getInventory()->setLeggings(Item::get(Item::CHAIN_LEGGINGS));
+								$player->getInventory()->setBoots(Item::get(Item::CHAIN_BOOTS));
+								$player->getInventory()->setItem(0, Item::get(Item::DIAMOND_AXE, 0, 1));
 								$player->getInventory()->sendArmorContents($player);
-							$player->getInventory()->setHotbarSlotIndex(0, 0);
-						}
-						else if($rank == "§b[§4You§7Tuber§b]")
-						{
-							$player->getInventory()->setContents(array(Item::get(0, 0, 0)));
-							$player->getInventory()->setHelmet(Item::get(Item::GOLD_HELMET));
-							$player->getInventory()->setChestplate(Item::get(Item::GOLD_CHESTPLATE));
-							$player->getInventory()->setLeggings(Item::get(Item::GOLD_LEGGINGS));
-							$player->getInventory()->setBoots(Item::get(Item::GOLD_BOOTS));
-							$player->getInventory()->setItem(0, Item::get(Item::IRON_AXE, 0, 1));
+								$player->getInventory()->setHotbarSlotIndex(0, 0);
+							}else if($rank == "§b[§aVIP§b]"){
+								$player->getInventory()->setContents(array(Item::get(0, 0, 0)));
+								$player->getInventory()->setHelmet(Item::get(Item::GOLD_HELMET));
+								$player->getInventory()->setChestplate(Item::get(Item::GOLD_CHESTPLATE));
+								$player->getInventory()->setLeggings(Item::get(Item::LEATHER_PANTS));
+								$player->getInventory()->setBoots(Item::get(Item::LEATHER_BOOTS));
+								$player->getInventory()->setItem(0, Item::get(Item::IRON_AXE, 0, 1));
 								$player->getInventory()->sendArmorContents($player);
-							$player->getInventory()->setHotbarSlotIndex(0, 0);
-						}
-						else if($rank == "§b[§aVIP§b]")
-						{
-							$player->getInventory()->setContents(array(Item::get(0, 0, 0)));
-							$player->getInventory()->setHelmet(Item::get(Item::DIAMOND_HELMET));
-							$player->getInventory()->setChestplate(Item::get(Item::CHAIN_CHESTPLATE));
-							$player->getInventory()->setLeggings(Item::get(Item::CHAIN_LEGGINGS));
-							$player->getInventory()->setBoots(Item::get(Item::DIAMOND_BOOTS));
-							$player->getInventory()->setItem(0, Item::get(Item::DIAMOND_AXE, 0, 1));
+								$player->getInventory()->setHotbarSlotIndex(0, 0);
+							}else if($rank == "§b[§4You§7Tuber§b]"){
+								$player->getInventory()->setContents(array(Item::get(0, 0, 0)));
+								$player->getInventory()->setHelmet(Item::get(Item::GOLD_HELMET));
+								$player->getInventory()->setChestplate(Item::get(Item::GOLD_CHESTPLATE));
+								$player->getInventory()->setLeggings(Item::get(Item::GOLD_LEGGINGS));
+								$player->getInventory()->setBoots(Item::get(Item::GOLD_BOOTS));
+								$player->getInventory()->setItem(0, Item::get(Item::IRON_AXE, 0, 1));
 								$player->getInventory()->sendArmorContents($player);
-							$player->getInventory()->setHotbarSlotIndex(0, 0);
+								$player->getInventory()->setHotbarSlotIndex(0, 0);
+							}else if($rank == "§b[§aVIP§b]"){
+								$player->getInventory()->setContents(array(Item::get(0, 0, 0)));
+								$player->getInventory()->setHelmet(Item::get(Item::DIAMOND_HELMET));
+								$player->getInventory()->setChestplate(Item::get(Item::CHAIN_CHESTPLATE));
+								$player->getInventory()->setLeggings(Item::get(Item::CHAIN_LEGGINGS));
+								$player->getInventory()->setBoots(Item::get(Item::DIAMOND_BOOTS));
+								$player->getInventory()->setItem(0, Item::get(Item::DIAMOND_AXE, 0, 1));
+								$player->getInventory()->sendArmorContents($player);
+								$player->getInventory()->setHotbarSlotIndex(0, 0);
+							}
 						}
-						}
+						*/
 					}
 					else
 					{
