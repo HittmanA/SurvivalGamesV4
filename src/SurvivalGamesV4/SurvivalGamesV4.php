@@ -102,10 +102,10 @@ class SurvivalGamesV4 extends PluginBase implements Listener {
           			$pl->dataPacket($light);
         			$event->setDeathMessage("§7" . $p->getName() . " was demolished ");
         			if($pl->hasEffect(1) && $pl->hasEffect(8)){
-        				$pl = $this->pl;
+        				$this->pl = $pl;
         			}else{
         				if($pl->hasEffect(1) || $pl->hasEffect(8)){
-        					$pl = $this->pl;
+        					$this->pl = $pl;
         				}
         			}
           		}
