@@ -1,23 +1,22 @@
-Please Do NOT Delete The Following:
+**Please Do NOT Delete The Following:**
 
-Before you make an issue, make sure your issue matches the criteria below
-Once the issue is submitted, Select all that Apply to your Issue:
+> ## Please Provide the Issue:
+
+> ### Sources - If any Errors or Pictures to Show, Put Them Here:
+
+> Please provide all that apply to this Issue!
 - [ ] This issue isn't duplicated - you can check if it is by using the search bar located at the top left hand corner and select "Issues" on the left.
 - [ ] This issue includes appropriate markdown for sections - e.g. code blocks for crash dumps.
 - [ ] This issue is written in your native language for maximal clarity
 - [ ] This issue does not have abbreveations. Abbreviations make it not understandable.
-- [ ] This issue is for SurvivalGamesV3, and not any other plugin.
-- [ ] This is not a suggestion, but an actual issue<br> <br>
+- [ ] This issue is for SurvivalGamesV4, and not any other plugin.
+- [ ] This is not a suggestion, but an actual issue
 
-#### NOTE: If it is a suggestion, title it [SUGGESTION] ______
+> # Please Provide the Server Software Provider:
+- [ ] PocketMine-MP
+- [ ] ImagicalMine
+- [ ] ClearSky
+- [ ] Genisys
+- [ ] Other...
 
-If all the checkboxes are checked, congratulations! Fill out the fields below:
-[!] = required
-
-### [!] Please Provide Your Server Provider (ImagicalMine, Genisys, Clearsky, etc):
-
-### [!] The Issue:
-
-#### PHP Code Errors:
-
-#### If Crash Dumps are Available, Please Post it here:
+> ### Other INFO
