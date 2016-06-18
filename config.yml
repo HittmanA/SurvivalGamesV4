@@ -40,6 +40,12 @@ RemoveKitsAfterSG: false
 #If false, Players will have the items recieved from every SG Match
 ClearInv: true
 
+#Modifications for VIP Text Format (for their message ONLY) EG: §b OutputEXAMPLE: [VIP+] (In Aqua Text Color)Hi ALL
+TextMod1: §b
+
+#Modify The VIP Prefix ... VIP Prefix Occurs only when a VIP chats. EX: [VIP+] Hi:
+VPrefix: §b[VIP§a+§b]
+
 chestitems:
 - - 261
   - 0
