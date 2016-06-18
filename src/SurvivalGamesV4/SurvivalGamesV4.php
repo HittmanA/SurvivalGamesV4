@@ -43,6 +43,8 @@ class SurvivalGamesV4 extends PluginBase implements Listener {
 	public $mode = 0;
 	public $arenas = array();
 	public $currentLevel = "";
+	public $pl;
+	public $format1;
 	
 	public function onEnable()
 	{
@@ -78,6 +80,7 @@ class SurvivalGamesV4 extends PluginBase implements Listener {
 		$this->getServer()->getScheduler()->scheduleRepeatingTask(new GameSender($this), 20);
 		$this->getServer()->getScheduler()->scheduleRepeatingTask(new RefreshSigns($this), 10);
 		$this->prefix = $config->get("SG_Prefix");
+		$this->format1 = $config->get("TextMod1");
 	}
 	
 	public function removeEffects(PlayerQuitEvent $event){
@@ -278,10 +281,14 @@ class SurvivalGamesV4 extends PluginBase implements Listener {
 	{
 		$player = $event->getPlayer();
 		$message = $event->getMessage();
-		$config = new Config($this->getDataFolder() . "/rank.yml", Config::YAML);
-		$rank = "";
-		if($config->get($player->getName()) != null){
-			$rank = $config->get($player->getName());
+		$name = $player->getName();
+		$config = new Config($this->getDataFolder() . "/config.yml", Config::YAML);
+		$vip = new Config($this->getDataFolder() . "/vip.yml", Config::YAML);
+		$vips = $vip->get("vips");
+		$vp = $config->get("VPrefix");
+		$format = $this->format1;
+		if($config->get($vips[$name]) != null){
+			$event->setFormat("[$vp] §".$format."$message");
 		}
 		
 		$level = $player->getLevel()->getFolderName();
@@ -290,11 +297,11 @@ class SurvivalGamesV4 extends PluginBase implements Listener {
 			$event->setRecipients($player->getLevel()->getPlayers());
 		}
 		
-		if($config->get("EnableChatFormat") === true){
+		if($config->get("EnableChatFormat") == true){
  			$event->setFormat($rank . C::WHITE . $player->getName() . " §d:§f " . $message);
 		}
 		
- 		if(in_array($level,$this->arenas) === false){
+ 		if(in_array($level,$this->arenas) == false){
  			$event->setRecipients($player->getLevel()->getPlayers());
  		}
 	}
