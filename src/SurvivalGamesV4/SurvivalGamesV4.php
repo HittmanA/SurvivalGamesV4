@@ -49,7 +49,7 @@ class SurvivalGamesV4 extends PluginBase implements Listener {
 	public function onEnable()
 	{
         $this->getServer()->getPluginManager()->registerEvents($this ,$this);
-		$this->getLogger()->info(C::GREEN . "SurvivalGamesV4 (V4.0.6) Loaded!");
+		$this->getLogger()->info(C::GREEN . "SurvivalGamesV4 (V4.1) Loaded!");
 		$this->saveResource("/rank.yml");
 		$this->saveResource("/config.yml");
 		@mkdir($this->getDataFolder());
