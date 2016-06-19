@@ -44,7 +44,7 @@ ClearInv: true
 TextMod1: §b
 
 #Modify The VIP Prefix ... VIP Prefix Occurs only when a VIP chats. EX: [VIP+] Hi:
-VPrefix: §b[VIP§a+§b]
+VPrefix: §bVIP§a+§b
 
 chestitems:
 - - 261
