@@ -6,7 +6,7 @@
 
 <a href = "https://github.com/Inactive-to-Reactive/SurvivalGamesV4/releases/download/V4.0.5/SGV4.0.5.phar">![Download](https://www.wowthemes.net/wp-content/uploads/2014/01/freethemesdownload.png)</a>
 
-# SurvivalGames  V4.0.6
+# SurvivalGames  V4.1
 SurvivalGames plugin for All PHP Supported Server Softwares
 <a href = "https://inactive-to-reactive.github.io/SurvivalGamesV4">SurvivalGamesV4 Website!</a>
 # Commands:
