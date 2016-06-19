@@ -4,7 +4,7 @@
 
 ### Download For **ALL MCPE Server Software Providers**:
 
-<a href = "https://github.com/Inactive-to-Reactive/SurvivalGamesV4/releases/download/V4.0.5/SGV4.0.5.phar">![Download](https://www.wowthemes.net/wp-content/uploads/2014/01/freethemesdownload.png)</a>
+<a href = "https://github.com/Inactive-to-Reactive/SurvivalGamesV4/releases/download/V4.1/SGV4.1.phar">![Download](https://www.wowthemes.net/wp-content/uploads/2014/01/freethemesdownload.png)</a>
 
 # SurvivalGames  V4.1
 SurvivalGames plugin for All PHP Supported Server Softwares
