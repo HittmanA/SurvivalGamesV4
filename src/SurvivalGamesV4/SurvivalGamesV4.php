@@ -314,7 +314,7 @@ class SurvivalGamesV4 extends PluginBase implements Listener {
 		
 		if($tile instanceof Sign){
 			if($this->mode==26){
-				$tile->setText(C::GRAY . "[§2Join§7]",C::BLUE  . "0 / 24",$this->currentLevel,$this->prefix);
+				$tile->setText(C::GRAY . "[§aJoin§7]",C::GOLD  . "0 / 24",$this->currentLevel,$this->prefix);
 				$this->refreshArenas();
 				$this->currentLevel = "";
 				$this->mode = 0;
@@ -458,15 +458,15 @@ class RefreshSigns extends PluginTask {
 				{
 					$aop = 0;
 					foreach($allplayers as $player){if($player->getLevel()->getFolderName()==$text[2]){$aop=$aop+1;}}
-					$ingame = C::WHITE . "[§bJoin§f]";
+					$ingame = C::GRAY . "[§aJoin§f]";
 					$config = new Config($this->plugin->getDataFolder() . "/config.yml", Config::YAML);
 					if($config->get($text[2] . "PlayTime")!=780)
 					{
-						$ingame = C::GRAY . "[§cRunning§7]";
+						$ingame = C::GRAY . "[§5Running§7]";
 					}
 					else if($aop>=24)
 					{
-						$ingame = C::GRAY . "[§4Full§7]";
+						$ingame = C::GRAY . "[§eFull§7]";
 					}
 					$t->setText($ingame,C::BLUE  . $aop . " / 24",$text[2],$this->prefix);
 				}
