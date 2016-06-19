@@ -66,7 +66,9 @@ class SurvivalGamesV4 extends PluginBase implements Listener {
 		}
 		foreach($this->arenas as $lev)
 		{
-			$this->getServer()->loadLevel($lev);
+			if($lev instanceof Level){
+				$this->getServer()->loadLevel($lev);
+			}
 		}
 		$items = array(array(261,0,1),array(262,0,2),array(262,0,3),array(267,0,1),array(268,0,1),array(272,0,1),array(276,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1),array(283,0,1));
 		if($config->get("chestitems") == null)
