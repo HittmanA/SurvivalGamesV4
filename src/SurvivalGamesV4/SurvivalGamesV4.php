@@ -244,35 +244,6 @@ class SurvivalGamesV4 extends PluginBase implements Listener {
 					}
 				}
 			}	
-				
-			# OLD
-			/* if($vip->get("Ranks") === true){
-				if($player->isOp()){
-					if(!empty($args[0])){
-						if(!empty($args[1])){
-							$rank = "";
-							if($args[0]=="VIP+"){
-								$rank = "§b[§aVIP§4+§b]";
-							}else if($args[0]=="YouTuber"){
-								$rank = "§b[§4You§7Tuber§b]";
-							}else if($args[0]=="YouTuber+"){
-								$rank = "§b[§4You§7Tuber§4+§b]";
-							}else{
-								$rank = "§b[§a" . $args[0] . "§b]";
-							}
-							$config = new Config($this->getDataFolder() . "/rank.yml", Config::YAML);
-							$config->set($args[1],$rank);
-							$config->save();
-							$player->sendMessage($args[1] . " got this rank: " . $rank);
-						}else{
-							$player->sendMessage("Missing parameter(s)");
-						}
-					}else{
-						$player->sendMessage("Missing parameter(s)");
-					}
-				}
-			}
-			*/
 		}
 		return true;
 	}
@@ -334,50 +305,6 @@ class SurvivalGamesV4 extends PluginBase implements Listener {
 						$player->setNameTag(C::BOLD . C::RED . $player->getName());
 						$player->getInventory()->clearAll();
                                                 $player->sendMessage($this->prefix . C::GRAY . "You have Successfully Joined a Match!");
-                                                
-                                                /*
-						$config2 = new Config($this->getDataFolder() . "/rank.yml", Config::YAML);
-						$rank = $config2->get($player->getName());
-						if($this->getConfig()->get("Ranks") === true){
-							if($rank == "§b[§aVIP§4+§b]"){
-								$player->getInventory()->setContents(array(Item::get(0, 0, 0)));
-								$player->getInventory()->setHelmet(Item::get(Item::CHAIN_HELMET));
-								$player->getInventory()->setChestplate(Item::get(Item::CHAIN_CHESTPLATE));
-								$player->getInventory()->setLeggings(Item::get(Item::CHAIN_LEGGINGS));
-								$player->getInventory()->setBoots(Item::get(Item::CHAIN_BOOTS));
-								$player->getInventory()->setItem(0, Item::get(Item::DIAMOND_AXE, 0, 1));
-								$player->getInventory()->sendArmorContents($player);
-								$player->getInventory()->setHotbarSlotIndex(0, 0);
-							}else if($rank == "§b[§aVIP§b]"){
-								$player->getInventory()->setContents(array(Item::get(0, 0, 0)));
-								$player->getInventory()->setHelmet(Item::get(Item::GOLD_HELMET));
-								$player->getInventory()->setChestplate(Item::get(Item::GOLD_CHESTPLATE));
-								$player->getInventory()->setLeggings(Item::get(Item::LEATHER_PANTS));
-								$player->getInventory()->setBoots(Item::get(Item::LEATHER_BOOTS));
-								$player->getInventory()->setItem(0, Item::get(Item::IRON_AXE, 0, 1));
-								$player->getInventory()->sendArmorContents($player);
-								$player->getInventory()->setHotbarSlotIndex(0, 0);
-							}else if($rank == "§b[§4You§7Tuber§b]"){
-								$player->getInventory()->setContents(array(Item::get(0, 0, 0)));
-								$player->getInventory()->setHelmet(Item::get(Item::GOLD_HELMET));
-								$player->getInventory()->setChestplate(Item::get(Item::GOLD_CHESTPLATE));
-								$player->getInventory()->setLeggings(Item::get(Item::GOLD_LEGGINGS));
-								$player->getInventory()->setBoots(Item::get(Item::GOLD_BOOTS));
-								$player->getInventory()->setItem(0, Item::get(Item::IRON_AXE, 0, 1));
-								$player->getInventory()->sendArmorContents($player);
-								$player->getInventory()->setHotbarSlotIndex(0, 0);
-							}else if($rank == "§b[§aVIP§b]"){
-								$player->getInventory()->setContents(array(Item::get(0, 0, 0)));
-								$player->getInventory()->setHelmet(Item::get(Item::DIAMOND_HELMET));
-								$player->getInventory()->setChestplate(Item::get(Item::CHAIN_CHESTPLATE));
-								$player->getInventory()->setLeggings(Item::get(Item::CHAIN_LEGGINGS));
-								$player->getInventory()->setBoots(Item::get(Item::DIAMOND_BOOTS));
-								$player->getInventory()->setItem(0, Item::get(Item::DIAMOND_AXE, 0, 1));
-								$player->getInventory()->sendArmorContents($player);
-								$player->getInventory()->setHotbarSlotIndex(0, 0);
-							}
-						}
-						*/
 					}
 					else
 					{
