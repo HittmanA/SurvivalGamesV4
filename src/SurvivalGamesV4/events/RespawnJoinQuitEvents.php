@@ -1,4 +1,5 @@
 <?php
+
 #  ad88888ba    ,ad8888ba,  8b           d8      ,d8  
 # d8"     "8b  d8"'    `"8b `8b         d8'    ,d888    
 # Y8,         d8'            `8b       d8'   ,d8" 88    
@@ -7,7 +8,10 @@
 #         `8b Y8,        88     `8b d8'  8888888888888  
 # Y8a     a8P  Y8a.    .a88      `888'            88    
 #  "Y88888P"    `"Y88888P"        `8'             88    
+
 namespace SurvivalGamesV4\events;
+
+
 use pocketmine\plugin\PluginBase;
 use pocketmine\scheduler\PluginTask;
 use pocketmine\event\Listener;
@@ -42,7 +46,7 @@ use pocketmine\event\plugin\PluginEvent;
 use pocketmine\entity\Entity;
 use pocketmine\network\protocol\AddEntityPacket;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
-class RespawnJoinEvents{
+class RespawnJoinQuitEvents{
  	public function respawnWithEffects(PlayerRespawnEvent $e){
  		$p = $this->pl;
  		$s = Effect::getEffect(1);
@@ -190,5 +194,10 @@ class RespawnJoinEvents{
 		$p10->getInventory()->addItem(Item::get(307,0,1));
 		$p10->getInventory()->addItem(Item::get(308,0,1));
 		$p10->getInventory()->addItem(Item::get(309,0,1));
+	}
+	public function onQuit(PlayerQuitEvent $e){
+		$aop = count($level->getPlayers());
+		$minusplayer = 1;
+		$second = $aop - $minusplayer . "/ 24";
 	}
 }
