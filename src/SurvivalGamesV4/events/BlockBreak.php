@@ -10,7 +10,7 @@
 # Y8a     a8P  Y8a.    .a88      `888'            88    
 #  "Y88888P"    `"Y88888P"        `8'             88    
 
-namespace SurvivalGamesV4/events;
+namespace SurvivalGamesV4\events;
 
 
 use pocketmine\plugin\PluginBase;
