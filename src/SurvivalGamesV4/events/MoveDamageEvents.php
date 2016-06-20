@@ -47,7 +47,7 @@ use pocketmine\entity\Entity;
 use pocketmine\network\protocol\AddEntityPacket;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 
-class Move-DamageEvents{
+class MoveDamageEvents{
 	public function onMove(PlayerMoveEvent $event)
 	{
 		$player = $event->getPlayer();
