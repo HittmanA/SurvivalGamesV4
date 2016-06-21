@@ -110,6 +110,6 @@ class Loader extends PluginBase{
 	  $this->saveResource("/ranks.yml");
 		$this->saveResource("/config.yml");
 		$this->saveResource("/vips.yml");
-		$this->getLogger()->info(C::DARK_RED . "SurvivalGamesV4 (V4.1) has Sucessfully Disabled!")
+		$this->getLogger()->info(C::DARK_RED . "SurvivalGamesV4 (V4.1) has Sucessfully Disabled!");
 	}
 }
